@@ -1,0 +1,130 @@
+private class TreeNode {
+    int val;
+    TreeNode left, right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+
+    private boolean validBoundaries(int m, int n, int y, int x){
+        return y>=0 && x>=0 && y < m && x < n;
+    }
+
+static TreeNode strArrayToTree(String input){
+    String[] split = input.split(",");
+    int n = split.length;
+    TreeNode root = new TreeNode(Integer.parseInt(split[0]));
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.offer(root);
+
+    int i=1;
+    while (i<split.length && !queue.isEmpty()){
+        TreeNode poll = queue.poll();
+        if(!split[i].equals("null")) {
+            poll.left = new TreeNode(Integer.parseInt(split[i]));
+            queue.offer(poll.left);
+        }
+
+        if(i+1<n && !split[i+1].equals("null")) {
+            poll.right = new TreeNode(Integer.parseInt(split[i+1]));;
+            queue.offer(poll.right);
+        }
+
+        i+=2;
+    }
+
+    return root;
+}
+
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+
+
+public class OperationsOnTree {
+    public static void main(String[] args) {
+        new Test().test();
+    }
+
+    private static class Test {
+        public void test() {
+
+            String methods = "";
+            String input = "";
+
+            LeetcodeInputIterator methodItr = new LeetcodeInputIterator(new LeetcodeMethodsCallStackInputParser(","), methods);
+            LeetcodeInputIterator inputItr = new LeetcodeInputIterator(new LeetcodeArgsParser(), input);
+
+            Iterator<String> methodIterator = methodItr;
+            Iterator<String> inputIterator = inputItr;
+            int y = -1;
+            while (methodIterator.hasNext()) {
+                y++;
+
+                String methodName = methodIterator.next();
+                String val = inputIterator.next();
+                System.out.print(y + " ");
+                switch (methodName) {
+                    case "Constructor": {
+                        System.out.println(y + " constr");
+                        break;
+                    }
+                    case "method1": {
+                        String[] split = val.split(",");
+                        System.out.println(y + " " + val + " ");
+                        break;
+                    }
+                }
+
+                System.out.println();
+            }
+        }
+    }
+}
+
+
+public class ListNode {
+     int val;
+    ListNode next;
+     ListNode() {}
+     ListNode(int val) { this.val = val; }
+     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+}
+
+
+public static void main(String[] args) {
+    new Test().test();
+}
+
+private static class Test {
+    public void test() {
+        System.out.println(new Solution().);
+    }
+
+    class Solution {
+        Solution() {}
+    }
+}
+
+

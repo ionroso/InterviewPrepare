@@ -1,0 +1,28 @@
+package easy;
+
+public class CellsWithOddValuesInAMatrix {
+    public int oddCells(int m, int n, int[][] indices) {
+        int[][] output = new int[m][n];
+
+        for (int i = 0; i < m; i++) {
+            for (int c = 0; c < n; c++) {
+                output[indices[i][0]][c]++;
+            }
+
+            for (int r = 0; r < m; r++) {
+                output[r][indices[i][1]]++;
+
+            }
+        }
+
+        int count = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if(output[i][j] % 2 == 0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
